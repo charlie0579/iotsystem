@@ -1,0 +1,42 @@
+*** Creating Trace Output File 'uCos.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '"main.o"'
+### List of Objects: adding '"stm32f10x_it.o"'
+### List of Objects: adding '"usart.o"'
+### List of Objects: adding '"stm32f10x_rcc.o"'
+### List of Objects: adding '"stm32f10x_gpio.o"'
+### List of Objects: adding '"misc.o"'
+### List of Objects: adding '"stm32f10x_fsmc.o"'
+### List of Objects: adding '"stm32f10x_usart.o"'
+### List of Objects: adding '"core_cm3.o"'
+### List of Objects: adding '"system_stm32f10x.o"'
+### List of Objects: adding '".\startup_stm32f10x_hd.o"'
+### List of Objects: adding '"os_core.o"'
+### List of Objects: adding '"os_flag.o"'
+### List of Objects: adding '"os_mbox.o"'
+### List of Objects: adding '"os_mem.o"'
+### List of Objects: adding '"os_mutex.o"'
+### List of Objects: adding '"os_q.o"'
+### List of Objects: adding '"os_sem.o"'
+### List of Objects: adding '"os_task.o"'
+### List of Objects: adding '"os_time.o"'
+### List of Objects: adding '"os_tmr.o"'
+### List of Objects: adding '"os_cpu_c.o"'
+### List of Objects: adding '"os_dbg.o"'
+### List of Objects: adding '".\os_cpu_a.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 "main.o" "stm32f10x_it.o" "usart.o" "stm32f10x_rcc.o" "stm32f10x_gpio.o" "misc.o" "stm32f10x_fsmc.o" "stm32f10x_usart.o" "core_cm3.o" "system_stm32f10x.o" ".\startup_stm32f10x_hd.o" "os_core.o" "os_flag.o" "os_mbox.o" "os_mem.o" "os_mutex.o" "os_q.o" "os_sem.o" "os_task.o" "os_time.o" "os_tmr.o" "os_cpu_c.o" "os_dbg.o" ".\os_cpu_a.o" --library_type=microlib --strict --scatter "uCos.sct" 
+--autoat --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\…Ò÷€III∫≈\uCos.map" -o "uCos.axf"### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: 'uCos.axf'
+### ADS-LD Command File: 'uCos.lnp'
+### Checking for dirty Components...
+### Creating CmdFile 'uCos.lnp', Handle=0x00000354
+### Writing '.lnp' file
+### ADS-LD Command file 'uCos.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

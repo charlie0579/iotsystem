@@ -1,0 +1,5 @@
+--cpu Cortex-M3 ".\easylife\main.o" ".\easylife\led.o" ".\easylife\usart.o" ".\easylife\stm32f10x_it.o" ".\easylife\plantformmessage.o" ".\easylife\sim900.o" ".\easylife\plantformservice.o" ".\easylife\ds18b20.o" ".\easylife\gpioinput.o" ".\easylife\cjson.o" ".\easylife\stm32f10x_rcc.o" ".\easylife\stm32f10x_gpio.o" ".\easylife\misc.o" ".\easylife\stm32f10x_fsmc.o" ".\easylife\stm32f10x_usart.o" ".\easylife\core_cm3.o" ".\easylife\system_stm32f10x.o" ".\easylife\startup_stm32f10x_hd.o" ".\easylife\os_core.o" ".\easylife\os_flag.o" ".\easylife\os_mbox.o" ".\easylife\os_mem.o" ".\easylife\os_mutex.o" ".\easylife\os_q.o" ".\easylife\os_sem.o" ".\easylife\os_task.o" ".\easylife\os_time.o" ".\easylife\os_tmr.o" ".\easylife\os_cpu_c.o" ".\easylife\os_dbg.o" ".\easylife\os_cpu_a.o" ".\easylife\mqtt.o" 
+--library_type=microlib --strict --scatter ".\EasyLife\uCos.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\EasyLife\uCos.map" -o .\EasyLife\uCos.axf

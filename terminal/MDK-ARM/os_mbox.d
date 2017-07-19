@@ -1,0 +1,11 @@
+os_mbox.o: ..\UCOSII\CORE\os_mbox.c
+os_mbox.o: ..\UCOSII\CORE\ucos_ii.h
+os_mbox.o: ..\UCOSII\CONFIG\includes.h
+os_mbox.o: C:\Keil\ARM\RV31\INC\stdio.h
+os_mbox.o: C:\Keil\ARM\RV31\INC\string.h
+os_mbox.o: C:\Keil\ARM\RV31\INC\ctype.h
+os_mbox.o: C:\Keil\ARM\RV31\INC\stdlib.h
+os_mbox.o: C:\Keil\ARM\RV31\INC\stdarg.h
+os_mbox.o: ..\UCOSII\CORE\ucos_ii.h
+os_mbox.o: ..\UCOSII\PORT\os_cpu.h
+os_mbox.o: ..\UCOSII\CONFIG\os_cfg.h

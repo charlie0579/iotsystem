@@ -1,0 +1,318 @@
+#include "GPRSmsgHandle.h"
+
+ESIM900Status SIMStatus;
+ELEDStatus LEDStatus;
+ELEDStatus LEDHisStatus;
+
+int SendFaultCount = 0;
+u8 Sim900AReceiveBuff[256];
+u8 tempBuffP = 0;
+
+u8 SendCharSim900A(u8 ch)
+{
+	/* Place your implementation of fputc here */
+  /* e.g. write a character to the USART */
+  USART_SendData(USART1, (uint8_t) ch);
+
+  /* Loop until the end of transmission */
+  while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET)
+  {}
+
+  return ch;
+}
+
+void SendMsgToSim900A(unsigned char *p)
+{
+	while(*p != '\0')
+	{
+		SendCharSim900A(*p++);
+	}
+}
+void ResetErrorCount(void)
+{
+	SendFaultCount = 0;
+}
+
+void ClearSim900AReceiveBuff(void)
+{
+	u16 tempi;
+	tempBuffP = 0;
+	for(tempi = 0; tempi < 256; tempi++ )
+	{
+		Sim900AReceiveBuff[tempi] = '\0';
+	}
+}
+
+
+void LongDelayms(unsigned int uiDly)
+{
+    OSTimeDlyHMSM(0,0,0,uiDly);
+}
+
+u8 ConfirmIfEndReceive(char* srcBuff, char* targetBuff)
+{
+	char *p = NULL;
+	int i;
+	for(i = 0; i< 10000; i++)
+	{
+		p = strstr((const char*)srcBuff, targetBuff);
+		if(p == NULL)
+		{
+			OSTimeDlyHMSM(0,0,1,0);
+		}
+		else
+		{
+			break;
+		}
+	}
+	if(NULL == p)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
+}
+
+
+void CheckSIMStatus()
+{
+	
+	ResetErrorCount();
+	SendMsgToSim900A("\r\n");
+	SendMsgToSim900A("AT+CPIN?\r\n");
+	printf("*******************************\r\n");
+	OSTimeDlyHMSM(0,0,0,200);
+	if(ConfirmIfEndReceive((char*)Sim900AReceiveBuff, "OK") == true)
+	{
+		printf("\r\n SIM card ready \r\n");
+		SIMStatus = ESim900Ready;
+	}
+	else
+	{
+		printf("\r\n %s \r\n", Sim900AReceiveBuff);
+		printf("\r\n SIM card ready not ready!");
+		SIMStatus = ESim900NoInit;
+	}
+		
+	printf("\r\n*******************************\r\n");
+	ClearSim900AReceiveBuff();
+}
+
+void GPRSConnect(u32 DelayTimeMs)
+{
+	/////////////////////////////////////
+	OSTimeDlyHMSM(0,0,0,DelayTimeMs*5);
+
+	SendMsgToSim900A("AT+CIPCLOSE\r\n");
+	OSTimeDlyHMSM(0,0,0,DelayTimeMs);
+	SendMsgToSim900A("AT+CIPSHUT\r\n");
+	OSTimeDlyHMSM(0,0,0,DelayTimeMs);
+	SendMsgToSim900A("AT+CIPHEAD=1\r\n");
+	OSTimeDlyHMSM(0,0,0,DelayTimeMs*5);
+	if(ConfirmIfEndReceive((char*)Sim900AReceiveBuff, "OK") == true)
+	{
+		printf("\r\n AT+CIPHEAD ready \r\n");
+
+		SendMsgToSim900A("\r\n");
+		SendMsgToSim900A("AT+CIPSTART=\"TCP\",\"115.159.41.116\",\"8801\"\r\n");
+		OSTimeDlyHMSM(0,0,0,DelayTimeMs*5);
+		if(ConfirmIfEndReceive((char*)Sim900AReceiveBuff, "CONNECT OK") == true ||
+			ConfirmIfEndReceive((char*)Sim900AReceiveBuff, "ALREADY CONNECT") == true)
+		{
+			printf("\r\n GPRS CONNECT OK \r\n");
+			SIMStatus = ESim900GPRSConnect;
+		}
+		else if(ConfirmIfEndReceive((char*)Sim900AReceiveBuff, "ERROR") == true)
+		{
+			printf("\r\n GPRS NOT CONNECTTED!");
+			SIMStatus = ESim900GPRSDisConnect;
+		}
+	}
+	else
+	{
+		printf("\r\n AT+CIPHEAD not ready!");
+		SIMStatus = ESim900NoInit;
+	}
+	ConfirmLEDCommand();
+	ClearSim900AReceiveBuff();
+}
+
+void GPRSSendEcho(u32 DelayTimeMs)
+{
+	//////////////
+	//send data to Server
+	OSTimeDlyHMSM(0,0,0,DelayTimeMs*5);
+	SendMsgToSim900A("\r\n");
+	OSTimeDlyHMSM(0,0,0,DelayTimeMs);;
+	SendMsgToSim900A("AT+CIPSEND\r\n");
+	OSTimeDlyHMSM(0,0,0,DelayTimeMs);
+	if(ConfirmIfEndReceive((char*)Sim900AReceiveBuff, ">") == true)
+	{
+
+		SendMsgToSim900A("ECHO\r\n");
+		OSTimeDlyHMSM(0,0,0,DelayTimeMs);
+		SendCharSim900A(0x1a);
+		OSTimeDlyHMSM(0,0,0,DelayTimeMs*5);
+		
+		if(ConfirmIfEndReceive((char*)Sim900AReceiveBuff, "SEND OK") == true)
+		{
+			SendFaultCount = 0;
+			SIMStatus = Esim900GPRSSendReceiveMsg;
+		}
+		else
+		{
+			printf("\r\n Send Fault\r\n");
+			SIMStatus = Esim900GPRSSendFault;
+			SendFaultCount++;
+		}
+	}
+	else
+	{
+		SIMStatus = ESim900GPRSConnect;
+		SendFaultCount++;
+	}
+	if(2 == SendFaultCount)
+	{
+		SIMStatus = ESim900NoInit;
+	}
+	ConfirmLEDCommand();
+	ClearSim900AReceiveBuff();
+}
+void GPRSConnectRegistTerminal(u32 DelayTimeMs)
+{
+	//////////////
+	//send data to Server
+	LongDelayms(DelayTimeMs*5);
+	SendMsgToSim900A("\r\n");
+	LongDelayms(DelayTimeMs);
+	SendMsgToSim900A("AT+CIPSEND\r\n");
+	LongDelayms(DelayTimeMs);
+	if(ConfirmIfEndReceive((char*)Sim900AReceiveBuff, ">") == true)
+	{
+//		SendMsgToSim900A("TERMINAL\r\n");
+//		LongDelayms(1000);
+//		SendCharSim900A(0x1a);
+		SendMsgToSim900A("TERMINAL\r\n");
+		LongDelayms(DelayTimeMs);
+		SendCharSim900A(0x1a);
+		LongDelayms(DelayTimeMs*5);
+		
+		if(ConfirmIfEndReceive((char*)Sim900AReceiveBuff, "SEND OK") == true)
+		{
+			SendFaultCount = 0;
+			SIMStatus = Esim900GPRSSendReceiveMsg;
+		}
+		else
+		{
+			printf("\r\n Send Fault\r\n");
+			SIMStatus = Esim900GPRSSendFault;
+			SendFaultCount++;
+		}
+	}
+	else
+	{
+		SIMStatus = ESim900GPRSConnect;
+		SendFaultCount++;
+	}
+	if(2 == SendFaultCount)
+	{
+		SIMStatus = ESim900NoInit;
+	}
+	ConfirmLEDCommand();
+	ClearSim900AReceiveBuff();
+}
+
+/////////
+void ConfirmLEDCommand(void)
+{
+		u32 DelayTimeMs = 50;
+		if(ConfirmIfEndReceive((char*)Sim900AReceiveBuff, "TURNON") == true)
+		{
+			printf("\r\n Open LED\r\n");
+			LEDStatus = ELedOpen;
+			//////////////////////////
+			LongDelayms(DelayTimeMs*5);
+			SendMsgToSim900A("\r\n");
+			LongDelayms(DelayTimeMs);
+			SendMsgToSim900A("AT+CIPSEND\r\n");
+			LongDelayms(DelayTimeMs);
+			if(ConfirmIfEndReceive((char*)Sim900AReceiveBuff, ">") == true)
+			{
+		//		SendMsgToSim900A("TERMINAL\r\n");
+		//		LongDelayms(1000);
+		//		SendCharSim900A(0x1a);
+
+				SendMsgToSim900A("SUCCESS\r\n");
+
+				LongDelayms(DelayTimeMs);
+				SendCharSim900A(0x1a);
+				LongDelayms(DelayTimeMs*5);
+			}
+			///////////////////////////////			
+		}
+		else if(ConfirmIfEndReceive((char*)Sim900AReceiveBuff, "SHUTDOWN") == true) 
+		{
+			printf("\r\n Close LED\r\n");
+			LEDStatus = ELedClose;
+			
+			//////////////////////////
+			LongDelayms(DelayTimeMs*5);
+			SendMsgToSim900A("\r\n");
+			LongDelayms(DelayTimeMs);
+			SendMsgToSim900A("AT+CIPSEND\r\n");
+			LongDelayms(DelayTimeMs);
+			if(ConfirmIfEndReceive((char*)Sim900AReceiveBuff, ">") == true)
+			{
+		//		SendMsgToSim900A("TERMINAL\r\n");
+		//		LongDelayms(1000);
+		//		SendCharSim900A(0x1a);
+
+				SendMsgToSim900A("SUCCESS\r\n");
+
+				LongDelayms(DelayTimeMs);
+				SendCharSim900A(0x1a);
+				LongDelayms(DelayTimeMs*5);
+			}
+			///////////////////////////////
+		}
+		else if(ConfirmIfEndReceive((char*)Sim900AReceiveBuff, "QUERY") == true) 
+		{
+			printf("\r\n Query LED\r\n");
+			//////////////////////////
+			LongDelayms(DelayTimeMs*5);
+			SendMsgToSim900A("\r\n");
+			LongDelayms(DelayTimeMs);
+			SendMsgToSim900A("AT+CIPSEND\r\n");
+			LongDelayms(DelayTimeMs);
+			if(ConfirmIfEndReceive((char*)Sim900AReceiveBuff, ">") == true)
+			{
+		//		SendMsgToSim900A("TERMINAL\r\n");
+		//		LongDelayms(1000);
+		//		SendCharSim900A(0x1a);
+				if(LEDStatus == ELedOpen)
+				{
+					SendMsgToSim900A("OPEN\r\n");
+				}
+				else
+				{
+					SendMsgToSim900A("CLOSE\r\n");
+				}
+				LongDelayms(DelayTimeMs);
+				SendCharSim900A(0x1a);
+				LongDelayms(DelayTimeMs*5);
+			}
+			///////////////////////////////
+		}
+}
+
+//////////////
+void CheckLEDCommand(void)
+{
+	LongDelayms(50);
+	//LEDStatus = ELedOpen;
+	//printf("\r\n Check LED status\r\n");
+	ConfirmLEDCommand();
+	ClearSim900AReceiveBuff();
+}

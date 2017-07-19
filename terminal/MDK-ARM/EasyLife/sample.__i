@@ -1,0 +1,5 @@
+-c --cpu Cortex-M3 -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I..\ -I..\Libraries\CMSIS\CM3\CoreSupport -I..\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x -I..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\UCOSII\CONFIG -I..\UCOSII\CORE -I..\UCOSII\PORT -I..\APP -I..\APP\STM32 -I..\APP\usart -I..\APP\LED -I..\APP\interface -I..\APP\PlantformService -I..\APP\SIM900 
+-I C:\Keil\ARM\RV31\INC 
+-I C:\Keil\ARM\CMSIS\Include 
+-I C:\Keil\ARM\Inc\?ST\STM32F10x 
+-DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -o ".\EasyLife\sample.o" --omf_browse ".\EasyLife\sample.crf" --depend ".\EasyLife\sample.d" "..\APP\MQTT\sample.c"

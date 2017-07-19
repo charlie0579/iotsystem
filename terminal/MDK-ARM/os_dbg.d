@@ -1,0 +1,11 @@
+os_dbg.o: ..\UCOSII\PORT\os_dbg.c
+os_dbg.o: ..\UCOSII\CORE\ucos_ii.h
+os_dbg.o: ..\UCOSII\CONFIG\includes.h
+os_dbg.o: C:\Keil\ARM\RV31\INC\stdio.h
+os_dbg.o: C:\Keil\ARM\RV31\INC\string.h
+os_dbg.o: C:\Keil\ARM\RV31\INC\ctype.h
+os_dbg.o: C:\Keil\ARM\RV31\INC\stdlib.h
+os_dbg.o: C:\Keil\ARM\RV31\INC\stdarg.h
+os_dbg.o: ..\UCOSII\CORE\ucos_ii.h
+os_dbg.o: ..\UCOSII\PORT\os_cpu.h
+os_dbg.o: ..\UCOSII\CONFIG\os_cfg.h

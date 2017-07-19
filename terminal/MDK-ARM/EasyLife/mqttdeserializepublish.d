@@ -1,0 +1,11 @@
+.\EasyLife\mqttdeserializepublish.o: ..\APP\MQTT\MQTTDeserializePublish.c
+.\EasyLife\mqttdeserializepublish.o: ..\APP\MQTT\StackTrace.h
+.\EasyLife\mqttdeserializepublish.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\EasyLife\mqttdeserializepublish.o: ..\APP\MQTT\MQTTPacket.h
+.\EasyLife\mqttdeserializepublish.o: ..\APP\MQTT\MQTTConnect.h
+.\EasyLife\mqttdeserializepublish.o: ..\APP\MQTT\MQTTPublish.h
+.\EasyLife\mqttdeserializepublish.o: ..\APP\MQTT\MQTTSubscribe.h
+.\EasyLife\mqttdeserializepublish.o: ..\APP\MQTT\MQTTUnsubscribe.h
+.\EasyLife\mqttdeserializepublish.o: ..\APP\MQTT\MQTTFormat.h
+.\EasyLife\mqttdeserializepublish.o: ..\APP\MQTT\MQTTPacket.h
+.\EasyLife\mqttdeserializepublish.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h

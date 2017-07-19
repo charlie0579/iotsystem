@@ -1,0 +1,51 @@
+*** Creating Trace Output File '.\EasyLife\uCos.tra' Ok.
+### Preparing for ADS-LD.
+### Creating ADS-LD Command Line
+### List of Objects: adding '".\easylife\main.o"'
+### List of Objects: adding '".\easylife\led.o"'
+### List of Objects: adding '".\easylife\usart.o"'
+### List of Objects: adding '".\easylife\stm32f10x_it.o"'
+### List of Objects: adding '".\easylife\plantformmessage.o"'
+### List of Objects: adding '".\easylife\sim900.o"'
+### List of Objects: adding '".\easylife\plantformservice.o"'
+### List of Objects: adding '".\easylife\ds18b20.o"'
+### List of Objects: adding '".\easylife\gpioinput.o"'
+### List of Objects: adding '".\easylife\cjson.o"'
+### List of Objects: adding '".\easylife\stm32f10x_rcc.o"'
+### List of Objects: adding '".\easylife\stm32f10x_gpio.o"'
+### List of Objects: adding '".\easylife\misc.o"'
+### List of Objects: adding '".\easylife\stm32f10x_fsmc.o"'
+### List of Objects: adding '".\easylife\stm32f10x_usart.o"'
+### List of Objects: adding '".\easylife\core_cm3.o"'
+### List of Objects: adding '".\easylife\system_stm32f10x.o"'
+### List of Objects: adding '".\easylife\startup_stm32f10x_hd.o"'
+### List of Objects: adding '".\easylife\os_core.o"'
+### List of Objects: adding '".\easylife\os_flag.o"'
+### List of Objects: adding '".\easylife\os_mbox.o"'
+### List of Objects: adding '".\easylife\os_mem.o"'
+### List of Objects: adding '".\easylife\os_mutex.o"'
+### List of Objects: adding '".\easylife\os_q.o"'
+### List of Objects: adding '".\easylife\os_sem.o"'
+### List of Objects: adding '".\easylife\os_task.o"'
+### List of Objects: adding '".\easylife\os_time.o"'
+### List of Objects: adding '".\easylife\os_tmr.o"'
+### List of Objects: adding '".\easylife\os_cpu_c.o"'
+### List of Objects: adding '".\easylife\os_dbg.o"'
+### List of Objects: adding '".\easylife\os_cpu_a.o"'
+### List of Objects: adding '".\easylife\mqtt.o"'
+### ADS-LD Command completed:
+--cpu Cortex-M3 ".\easylife\main.o" ".\easylife\led.o" ".\easylife\usart.o" ".\easylife\stm32f10x_it.o" ".\easylife\plantformmessage.o" ".\easylife\sim900.o" ".\easylife\plantformservice.o" ".\easylife\ds18b20.o" ".\easylife\gpioinput.o" ".\easylife\cjson.o" ".\easylife\stm32f10x_rcc.o" ".\easylife\stm32f10x_gpio.o" ".\easylife\misc.o" ".\easylife\stm32f10x_fsmc.o" ".\easylife\stm32f10x_usart.o" ".\easylife\core_cm3.o" ".\easylife\system_stm32f10x.o" ".\easylife\startup_stm32f10x_hd.o" ".\easylife\os_core.o" ".\easylife\os_flag.o" ".\easylife\os_mbox.o" ".\easylife\os_mem.o" ".\easylife\os_mutex.o" ".\easylife\os_q.o" ".\easylife\os_sem.o" ".\easylife\os_task.o" ".\easylife\os_time.o" ".\easylife\os_tmr.o" ".\easylife\os_cpu_c.o" ".\easylife\os_dbg.o" ".\easylife\os_cpu_a.o" ".\easylife\mqtt.o" 
+--library_type=microlib --strict --scatter ".\EasyLife\uCos.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\EasyLife\uCos.map" -o .\EasyLife\uCos.axf### Preparing Environment (PrepEnvAds)
+### ADS-LD Output File: '.\EasyLife\uCos.axf'
+### ADS-LD Command File: '.\EasyLife\uCos.lnp'
+### Checking for dirty Components...
+### Creating CmdFile '.\EasyLife\uCos.lnp', Handle=0x00000318
+### Writing '.lnp' file
+### ADS-LD Command file '.\EasyLife\uCos.lnp' is ready.
+### ADS-LD: About to start ADS-LD Thread.
+### ADS-LD: executed with 0 errors
+### Updating obj list
+### LDADS_file() completed.

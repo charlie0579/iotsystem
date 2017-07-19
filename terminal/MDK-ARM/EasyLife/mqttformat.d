@@ -1,0 +1,11 @@
+.\EasyLife\mqttformat.o: ..\APP\MQTT\MQTTFormat.c
+.\EasyLife\mqttformat.o: ..\APP\MQTT\StackTrace.h
+.\EasyLife\mqttformat.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\EasyLife\mqttformat.o: ..\APP\MQTT\MQTTPacket.h
+.\EasyLife\mqttformat.o: ..\APP\MQTT\MQTTConnect.h
+.\EasyLife\mqttformat.o: ..\APP\MQTT\MQTTPublish.h
+.\EasyLife\mqttformat.o: ..\APP\MQTT\MQTTSubscribe.h
+.\EasyLife\mqttformat.o: ..\APP\MQTT\MQTTUnsubscribe.h
+.\EasyLife\mqttformat.o: ..\APP\MQTT\MQTTFormat.h
+.\EasyLife\mqttformat.o: ..\APP\MQTT\MQTTPacket.h
+.\EasyLife\mqttformat.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h

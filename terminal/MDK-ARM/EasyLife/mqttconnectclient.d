@@ -1,0 +1,11 @@
+.\EasyLife\mqttconnectclient.o: ..\APP\MQTT\MQTTConnectClient.c
+.\EasyLife\mqttconnectclient.o: ..\APP\MQTT\MQTTPacket.h
+.\EasyLife\mqttconnectclient.o: ..\APP\MQTT\MQTTConnect.h
+.\EasyLife\mqttconnectclient.o: ..\APP\MQTT\MQTTPublish.h
+.\EasyLife\mqttconnectclient.o: ..\APP\MQTT\MQTTSubscribe.h
+.\EasyLife\mqttconnectclient.o: ..\APP\MQTT\MQTTUnsubscribe.h
+.\EasyLife\mqttconnectclient.o: ..\APP\MQTT\MQTTFormat.h
+.\EasyLife\mqttconnectclient.o: ..\APP\MQTT\StackTrace.h
+.\EasyLife\mqttconnectclient.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\EasyLife\mqttconnectclient.o: ..\APP\MQTT\MQTTPacket.h
+.\EasyLife\mqttconnectclient.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h

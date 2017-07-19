@@ -1,0 +1,11 @@
+os_sem.o: ..\UCOSII\CORE\os_sem.c
+os_sem.o: ..\UCOSII\CORE\ucos_ii.h
+os_sem.o: ..\UCOSII\CONFIG\includes.h
+os_sem.o: C:\Keil\ARM\RV31\INC\stdio.h
+os_sem.o: C:\Keil\ARM\RV31\INC\string.h
+os_sem.o: C:\Keil\ARM\RV31\INC\ctype.h
+os_sem.o: C:\Keil\ARM\RV31\INC\stdlib.h
+os_sem.o: C:\Keil\ARM\RV31\INC\stdarg.h
+os_sem.o: ..\UCOSII\CORE\ucos_ii.h
+os_sem.o: ..\UCOSII\PORT\os_cpu.h
+os_sem.o: ..\UCOSII\CONFIG\os_cfg.h

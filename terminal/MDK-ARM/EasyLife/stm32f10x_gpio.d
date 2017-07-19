@@ -1,0 +1,17 @@
+.\EasyLife\stm32f10x_gpio.o: ..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.c
+.\EasyLife\stm32f10x_gpio.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h
+.\EasyLife\stm32f10x_gpio.o: ..\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
+.\EasyLife\stm32f10x_gpio.o: ..\Libraries\CMSIS\CM3\CoreSupport\core_cm3.h
+.\EasyLife\stm32f10x_gpio.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\EasyLife\stm32f10x_gpio.o: ..\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h
+.\EasyLife\stm32f10x_gpio.o: ..\APP\STM32\stm32f10x_conf.h
+.\EasyLife\stm32f10x_gpio.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dma.h
+.\EasyLife\stm32f10x_gpio.o: ..\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h
+.\EasyLife\stm32f10x_gpio.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h
+.\EasyLife\stm32f10x_gpio.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h
+.\EasyLife\stm32f10x_gpio.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_fsmc.h
+.\EasyLife\stm32f10x_gpio.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h
+.\EasyLife\stm32f10x_gpio.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h
+.\EasyLife\stm32f10x_gpio.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h
+.\EasyLife\stm32f10x_gpio.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h
+.\EasyLife\stm32f10x_gpio.o: ..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h

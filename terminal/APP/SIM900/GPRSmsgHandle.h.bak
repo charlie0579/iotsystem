@@ -1,0 +1,44 @@
+#ifndef _GPRSMSGHANDLE_H
+#define _GPRSMSGHANDLE_H
+
+#include "stm32f10x.h"
+#include <string.h>
+#include <stdarg.h>
+#include "misc.h"
+#include "plantformMessage.h"
+
+#define false        0
+#define true         1
+
+typedef enum
+{
+	ESim900NoInit          = 0,
+	ESim900Ready           = 1,
+	ESim900GPRSConnect      = 2,
+	ESim900GPRSDisConnect  = 3,
+	Esim900GPRSSendReceiveMsg  = 4,
+	Esim900GPRSSendFault       = 5,
+	
+}ESIM900Status;
+
+typedef enum
+{
+	ELedInit          = 0,
+	ELedOpen          = 1,
+	ELedClose         = 2,
+}ELEDStatus;
+
+extern u8 Sim900AReceiveBuff[256];
+extern u8 tempBuffP;
+
+extern void ClearSim900AReceiveBuff(void);
+extern u8 ConfirmIfEndReceive(char* srcBuff, char* targetBuff);
+extern void CheckLEDCommand(void);
+extern void ConfirmLEDCommand(void);
+extern void GPRSConnectRegistTerminal(u32 DelayTimeMs);
+extern void GPRSSendEcho(u32 DelayTimeMs);
+extern void GPRSConnect(u32 DelayTimeMs);
+extern void CheckSIMStatus();
+extern void LongDelayms(unsigned int uiDly);
+#endif
+

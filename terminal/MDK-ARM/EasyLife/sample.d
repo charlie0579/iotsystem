@@ -1,0 +1,11 @@
+.\EasyLife\sample.o: ..\APP\MQTT\sample.c
+.\EasyLife\sample.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\EasyLife\sample.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\EasyLife\sample.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\EasyLife\sample.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+.\EasyLife\sample.o: C:\Keil\ARM\ARMCC\bin\..\include\assert.h
+.\EasyLife\sample.o: C:\Keil\ARM\ARMCC\bin\..\include\time.h
+.\EasyLife\sample.o: ..\APP\MQTT\mqtt.h
+.\EasyLife\sample.o: ..\APP\MQTT\config.h
+.\EasyLife\sample.o: C:\Keil\ARM\ARMCC\bin\..\include\stddef.h
+.\EasyLife\sample.o: ..\APP\MQTT\mqtt_buffer.h

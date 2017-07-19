@@ -1,0 +1,11 @@
+.\EasyLife\cjson.o: ..\APP\JSON\cJSON.c
+.\EasyLife\cjson.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
+.\EasyLife\cjson.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
+.\EasyLife\cjson.o: C:\Keil\ARM\ARMCC\bin\..\include\math.h
+.\EasyLife\cjson.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\EasyLife\cjson.o: C:\Keil\ARM\ARMCC\bin\..\include\float.h
+.\EasyLife\cjson.o: C:\Keil\ARM\ARMCC\bin\..\include\limits.h
+.\EasyLife\cjson.o: C:\Keil\ARM\ARMCC\bin\..\include\ctype.h
+.\EasyLife\cjson.o: C:\Keil\ARM\ARMCC\bin\..\include\locale.h
+.\EasyLife\cjson.o: ..\APP\JSON\cJSON.h
+.\EasyLife\cjson.o: C:\Keil\ARM\ARMCC\bin\..\include\stddef.h
